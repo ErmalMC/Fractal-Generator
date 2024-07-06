@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,10 +24,10 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Burning_Ship_Fractal_Paint);
-            this.Resize += new EventHandler(Form1_Resize);
+            this.Paint += new PaintEventHandler(Burning_Ship_Fractal_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Form1_Resize); // Add an event handler for the Resize event of the form
             UpdateBounds();
-            this.DoubleBuffered = true;
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
 
         private void Burning_Ship_Fractal_Paint(object sender, PaintEventArgs e)
@@ -44,7 +45,7 @@ namespace Fractal_Generator
         {
             double aspectRatio = (double)this.ClientSize.Width / this.ClientSize.Height;
 
-            if (aspectRatio > 1)
+            if (aspectRatio > 1) // Check if the aspect ratio is greater than 1 (landscape orientation)
             {
                 XMin = -2.0 * aspectRatio;
                 XMax = 2.0 * aspectRatio;
@@ -59,7 +60,7 @@ namespace Fractal_Generator
                 YMax = 2.0 / aspectRatio;
             }
         }
-        private Color GetColor(int iteration)
+        private Color GetColor(int iteration) //Returns black if current iteration is last iteration, otherwise returns corresponding color 
         {
             if (iteration == MaxIterations)
             {
@@ -69,7 +70,7 @@ namespace Fractal_Generator
             return ColorFromPalette(iteration);
         }
 
-        private Color ColorFromPalette(int iteration)
+        private Color ColorFromPalette(int iteration)  // Determines the color to be used for a given iteration of the fractal calculation
         {
             int colorCount = colorPalette.Count;
             double t = (double)iteration / MaxIterations;
@@ -89,9 +90,10 @@ namespace Fractal_Generator
         private void DrawBurningShip(Graphics g, int width, int height)
         {
             bitmap = new Bitmap(width, height);
+            // Use Parallel.For to iterate over the pixels in the bitmap
             Parallel.For(0, width, px =>
             {
-                for (int py = 0; py < height; py++)
+                for (int py = 0; py < height; py++) 
                 {
                     double x0 = XMin + (XMax - XMin) * px / width;
                     double y0 = YMin + (YMax - YMin) * py / height;
@@ -99,7 +101,7 @@ namespace Fractal_Generator
                     double y = 0.0;
                     int iteration = 0;
 
-                    while (x * x + y * y <= 4 && iteration < MaxIterations)
+                    while (x * x + y * y <= 4 && iteration < MaxIterations) // Perform the Burning Ship fractal calculation
                     {
                         double xtemp = x * x - y * y + x0;
                         y = Math.Abs(2 * x * y) + y0;
@@ -107,26 +109,28 @@ namespace Fractal_Generator
                         iteration++;
                     }
 
-                    Color color = GetColor(iteration);
-                    lock (bitmap)
+                    Color color = GetColor(iteration); // Get the color for the current pixel
+                    lock (bitmap) // Lock the bitmap and set the pixel color
                     {
-                        bitmap.SetPixel(px, py, color);
+                        bitmap.SetPixel(px, py, color); 
                     }
                 }
             });
 
-            g.DrawImage(bitmap, 0, 0);
+            g.DrawImage(bitmap, 0, 0); // Draw the bitmap on the form's graphics surface
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Set the filter for the Save File dialog
             dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
+            // Set the initial filter index to 4 (PNG)
             dlgSaveFile.FilterIndex = 4;
-            if (dlgSaveFile.ShowDialog() == DialogResult.OK)
+            if (dlgSaveFile.ShowDialog() == DialogResult.OK) // Display the Save File dialog
             {
                 string filename = dlgSaveFile.FileName;
                 string extension = filename.Substring(filename.LastIndexOf("."));
-                ImageFormat imageFormat = extension switch
+                ImageFormat imageFormat = extension switch // Determine the appropriate ImageFormat based on the file extension
                 {
                     ".bmp" => ImageFormat.Bmp,
                     ".jpg" or ".jpeg" => ImageFormat.Jpeg,
@@ -135,7 +139,7 @@ namespace Fractal_Generator
                     ".tif" or ".tiff" => ImageFormat.Tiff,
                     _ => ImageFormat.Png,
                 };
-                bitmap.Save(filename, imageFormat);
+                bitmap.Save(filename, imageFormat); // Save the bitmap to the selected file using the determined ImageFormat
             }
         }
 
