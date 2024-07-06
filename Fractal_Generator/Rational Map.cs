@@ -26,8 +26,10 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Rational_Map_Paint);
-            this.Resize += new EventHandler(Form1_Resize);
+            this.Paint += new PaintEventHandler(Rational_Map_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Form1_Resize); // Add an event handler for the Resize event of the form
+            UpdateBounds();
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
 
         private void Rational_Map_Paint(object sender, PaintEventArgs e)
@@ -63,7 +65,7 @@ namespace Fractal_Generator
 
         private void DrawRationalMapFractal(Graphics g, int width, int height)
         {
-            bitmap = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+            bitmap = new Bitmap(width, height, PixelFormat.Format24bppRgb); // Lock the bitmap's bits and get the bitmap data
             BitmapData bmpData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, bitmap.PixelFormat);
             int bytesPerPixel = Image.GetPixelFormatSize(bitmap.PixelFormat) / 8;
             int byteCount = bmpData.Stride * height;
@@ -72,7 +74,7 @@ namespace Fractal_Generator
             double xScale = (XMax - XMin) / width;
             double yScale = (YMax - YMin) / height;
 
-            Parallel.For(0, height, py =>
+            Parallel.For(0, height, py => // Use Parallel.For to iterate over the pixels in the bitmap
             {
                 int rowStart = py * bmpData.Stride;
                 double y0 = YMin + yScale * py;
@@ -94,7 +96,7 @@ namespace Fractal_Generator
                         double zxn = zx - Gamma * (zxJulia * zx2 - zyJulia * zy2) / denom;
                         double zyn = zy - Gamma * (zyJulia * zx2 + zxJulia * zy2) / denom;
 
-                        if ((zxn - zx) * (zxn - zx) + (zyn - zy) * (zyn - zy) < Tolerance * Tolerance)
+                        if ((zxn - zx) * (zxn - zx) + (zyn - zy) * (zyn - zy) < Tolerance * Tolerance) // Check if the iteration has converged
                         {
                             break;
                         }
@@ -110,7 +112,7 @@ namespace Fractal_Generator
                     pixels[pixelIndex + 2] = color.R;
                 }
             });
-
+            // Copy the pixel array back to the bitmap and unlock the bitmap data
             System.Runtime.InteropServices.Marshal.Copy(pixels, 0, bmpData.Scan0, pixels.Length);
             bitmap.UnlockBits(bmpData);
             g.DrawImage(bitmap, 0, 0);

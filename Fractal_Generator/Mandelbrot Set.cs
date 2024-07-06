@@ -22,10 +22,10 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Mandelbrot_Set_Paint);
-            this.Resize += new EventHandler(Mandelbrot_Set_Resize);
+            this.Paint += new PaintEventHandler(Mandelbrot_Set_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Mandelbrot_Set_Resize); // Add an event handler for the Resize event of the form
             UpdateBounds();
-            this.DoubleBuffered = true;
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
 
         private void Mandelbrot_Set_Paint(object sender, PaintEventArgs e)
@@ -98,7 +98,7 @@ namespace Fractal_Generator
                     double y = 0.0;
                     int iteration = 0;
 
-                    while (x * x + y * y <= 4 && iteration < MaxIterations)
+                    while (x * x + y * y <= 4 && iteration < MaxIterations) // Perform the Mandelbrot fractal calculation
                     {
                         double xtemp = x * x - y * y + x0;
                         y = 2 * x * y + y0;
@@ -106,15 +106,15 @@ namespace Fractal_Generator
                         iteration++;
                     }
 
-                    Color color = GetColor(iteration);
-                    lock (bitmap)
+                    Color color = GetColor(iteration); //Get the pixel color
+                    lock (bitmap) //Lock the bitmap and set pixel color 
                     {
                         bitmap.SetPixel(px, py, color);
                     }
                 }
             });
 
-            g.DrawImage(bitmap, 0, 0);
+            g.DrawImage(bitmap, 0, 0); // Draw the bitmap on the form's graphics surface
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,13 +186,5 @@ namespace Fractal_Generator
                 }
             }
         }
-
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-        
-
-        
     }
 }

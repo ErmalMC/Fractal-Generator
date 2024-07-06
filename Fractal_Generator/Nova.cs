@@ -29,10 +29,10 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Nova_Paint);
-            this.Resize += new EventHandler(Nova_Resize);
+            this.Paint += new PaintEventHandler(Nova_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Nova_Resize); // Add an event handler for the Resize event of the form
             UpdateBounds();
-            this.DoubleBuffered = true;
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
 
         private void Nova_Paint(object sender, PaintEventArgs e)
@@ -104,18 +104,18 @@ namespace Fractal_Generator
             double xScale = (XMax - XMin) / width;
             double yScale = (YMax - YMin) / height;
 
-            Parallel.For(0, height, py =>
+            Parallel.For(0, height, py => // Use a parallel loop to iterate over each pixel in the bitmap
             {
                 int rowStart = py * bmpData.Stride;
                 double y0 = YMin + yScale * py;
-                for (int px = 0; px < width; px++)
+                for (int px = 0; px < width; px++) // Iterate over each pixel in the current row
                 {
                     double x0 = XMin + xScale * px;
                     double zx = x0;
                     double zy = y0;
                     int iteration = 0;
 
-                    while (iteration < MaxIterations)
+                    while (iteration < MaxIterations) // Iterate until the maximum number of iterations is reached or the condition is met
                     {
                         double zx2 = zx * zx;
                         double zy2 = zy * zy;
@@ -129,7 +129,7 @@ namespace Fractal_Generator
                         double zxn = zx - Gamma * (zxCubed - StartValue * zx) / (denom + relaxationFactor);
                         double zyn = zy - Gamma * (zyCubed - StartValue * zy) / (denom + relaxationFactor);
 
-                        if ((zxn - zx) * (zxn - zx) + (zyn - zy) * (zyn - zy) < Tolerance * Tolerance)
+                        if ((zxn - zx) * (zxn - zx) + (zyn - zy) * (zyn - zy) < Tolerance * Tolerance) // Check if the change in zx and zy is less than the tolerance value
                         {
                             break;
                         }
@@ -138,7 +138,7 @@ namespace Fractal_Generator
                         iteration++;
                     }
 
-                    Color color = GetColor(iteration);
+                    Color color = GetColor(iteration); // Get the color based on the final iteration count
                     int pixelIndex = rowStart + px * bytesPerPixel;
                     pixels[pixelIndex] = color.B;
                     pixels[pixelIndex + 1] = color.G;
@@ -146,7 +146,7 @@ namespace Fractal_Generator
                 }
             });
 
-            System.Runtime.InteropServices.Marshal.Copy(pixels, 0, bmpData.Scan0, pixels.Length);
+            System.Runtime.InteropServices.Marshal.Copy(pixels, 0, bmpData.Scan0, pixels.Length); // Copy the pixels array back to the locked bitmap data
             bitmap.UnlockBits(bmpData);
             g.DrawImage(bitmap, 0, 0);
         }

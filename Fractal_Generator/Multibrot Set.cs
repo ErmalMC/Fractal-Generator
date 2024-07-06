@@ -24,10 +24,10 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Multibrot_Set_Paint);
-            this.Resize += new EventHandler(Multibrot_Set_Resize);
+            this.Paint += new PaintEventHandler(Multibrot_Set_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Multibrot_Set_Resize); // Add an event handler for the Resize event of the form
             UpdateBounds();
-            this.DoubleBuffered = true;
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
 
         private void Multibrot_Set_Paint(object sender, PaintEventArgs e)
@@ -90,7 +90,7 @@ namespace Fractal_Generator
         private void DrawMultibrot(Graphics g, int width, int height)
         {
             bitmap = new Bitmap(width, height);
-
+            // Iterates through each pixel 
             for (int px = 0; px < width; px++)
             {
                 for (int py = 0; py < height; py++)
@@ -101,7 +101,7 @@ namespace Fractal_Generator
                     double y = 0.0;
                     int iteration = 0;
 
-                    while (x * x + y * y <= 4 && iteration < MaxIterations)
+                    while (x * x + y * y <= 4 && iteration < MaxIterations) // Perform the Multibrot fractal calculation
                     {
                         double xtemp = Math.Pow(x * x + y * y, exponent / 2.0) * Math.Cos(exponent * Math.Atan2(y, x)) + x0;
                         y = Math.Pow(x * x + y * y, exponent / 2.0) * Math.Sin(exponent * Math.Atan2(y, x)) + y0;
@@ -109,8 +109,8 @@ namespace Fractal_Generator
                         iteration++;
                     }
 
-                    Color color = GetColor(iteration);
-                    bitmap.SetPixel(px, py, color);
+                    Color color = GetColor(iteration); //Get the pixel color
+                    bitmap.SetPixel(px, py, color); // Set the pixel color
                 }
             }
 

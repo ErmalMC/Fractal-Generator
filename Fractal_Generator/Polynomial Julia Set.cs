@@ -24,8 +24,10 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Polynomial_Julia_Set_Paint);
-            this.Resize += new EventHandler(Form1_Resize);
+            this.Paint += new PaintEventHandler(Polynomial_Julia_Set_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Form1_Resize); // Add an event handler for the Resize event of the form
+            UpdateBounds();
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
         private void Polynomial_Julia_Set_Paint(object sender, PaintEventArgs e)
         {
@@ -65,7 +67,7 @@ namespace Fractal_Generator
             double dx = (XMax - XMin) / width;
             double dy = (YMax - YMin) / height;
 
-            for (int px = 0; px < width; px++)
+            for (int px = 0; px < width; px++) // Iterate over each pixel in the bitmap
             {
                 for (int py = 0; py < height; py++)
                 {
@@ -73,15 +75,17 @@ namespace Fractal_Generator
                     double y0 = YMin + dy * py;
                     Complex z = new Complex(x0, y0);
                     int iteration = 0;
-
+                    // Iterate until the magnitude of z squared is greater than or equal to 4,
+                    // or the maximum number of iterations is reached
                     while (z.MagnitudeSquared < 4 && iteration < MaxIterations)
                     {
+                        // Calculate the new value of z using the Polynomial Julia set formula
                         z = z.Power(PolynomialExponent) + new Complex(JuliaReal, JuliaImaginary);
                         iteration++;
                     }
 
-                    Color color = GetColor(iteration);
-                    bitmap.SetPixel(px, py, color);
+                    Color color = GetColor(iteration); // Get the color based on the final iteration count
+                    bitmap.SetPixel(px, py, color); // Set the pixel color in the bitmap
                 }
             }
 

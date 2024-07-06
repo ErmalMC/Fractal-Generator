@@ -24,8 +24,10 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Phoenix_Fractal_Paint);
-            this.Resize += new EventHandler(Phoenix_Fractal_Resize);
+            this.Paint += new PaintEventHandler(Phoenix_Fractal_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Phoenix_Fractal_Resize); // Add an event handler for the Resize event of the form
+            UpdateBounds();
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
 
         private void Phoenix_Fractal_Paint(object sender, PaintEventArgs e)
@@ -65,7 +67,7 @@ namespace Fractal_Generator
             double xScale = (XMax - XMin) / width;
             double yScale = (YMax - YMin) / height;
 
-            Parallel.For(0, width, px =>
+            Parallel.For(0, width, px => // Use a parallel loop to iterate over each pixel in the bitmap
             {
                 for (int py = 0; py < height; py++)
                 {
@@ -75,8 +77,11 @@ namespace Fractal_Generator
                     double zPrevReal = 0, zPrevImaginary = 0;
                     int iteration = 0;
 
+                    // Iterate until the magnitude of zReal and zImaginary squared is greater than or equal to 4,
+                    // or the maximum number of iterations is reached
                     while (zReal * zReal + zImaginary * zImaginary < 4 && iteration < MaxIterations)
                     {
+                        // Calculate the new values of zReal and zImaginary using the Phoenix fractal formula
                         double zNextReal = zReal * zReal - zImaginary * zImaginary + juliaReal + deltaReal * zPrevReal - deltaImaginary * zPrevImaginary;
                         double zNextImaginary = 2 * zReal * zImaginary + juliaImaginary + deltaReal * zPrevImaginary + deltaImaginary * zPrevReal;
                         zPrevReal = zReal;
@@ -86,8 +91,8 @@ namespace Fractal_Generator
                         iteration++;
                     }
 
-                    Color color = GetColor(iteration);
-                    lock (bitmap)
+                    Color color = GetColor(iteration); // Get the color based on the final iteration count
+                    lock (bitmap) // Set the pixel color in the bitmap using a lock
                     {
                         bitmap.SetPixel(px, py, color);
                     }

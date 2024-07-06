@@ -23,13 +23,13 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Newtonian_Fractal_Paint);
-            this.Resize += new EventHandler(Form1_Resize);
+            this.Paint += new PaintEventHandler(Newtonian_Fractal_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Form1_Resize); // Add an event handler for the Resize event of the form
             UpdateBounds();
             InitializeRoots();
-            this.DoubleBuffered = true;
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
-        private void InitializeRoots()
+        private void InitializeRoots() // Intializes the roots 
         {
             roots = ComputeRoots(PolynomialDegree);
         }
@@ -72,29 +72,34 @@ namespace Fractal_Generator
             double dx = (XMax - XMin) / width;
             double dy = (YMax - YMin) / height;
 
+            // Lock the bitmap's bits and get the bitmap data
             BitmapData bmpData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, bitmap.PixelFormat);
             int bytesPerPixel = Bitmap.GetPixelFormatSize(bitmap.PixelFormat) / 8;
             int byteCount = bmpData.Stride * height;
             byte[] pixels = new byte[byteCount];
 
-            Parallel.For(0, width, px =>
+
+            Parallel.For(0, width, px => // Use Parallel.For to iterate over the pixels in the bitmap
             {
                 for (int py = 0; py < height; py++)
                 {
+                    // Calculate the initial x and y coordinates
                     double x0 = XMin + dx * px;
                     double y0 = YMin + dy * py;
+
+                    // Create a new Complex number with the initial x and y coordinates
                     Complex z = new Complex(x0, y0);
                     int iteration = 0;
 
-                    while (iteration < MaxIterations)
+                    while (iteration < MaxIterations) // Perform the Newtonian fractal calculation
                     {
-                        Complex zToN = z.Power(PolynomialDegree);
+                        Complex zToN = z.Power(PolynomialDegree); // Calculate the numerator and denominator of the Newtonian formula
                         Complex zToNMinusOne = zToN / z;
                         Complex numerator = zToN - Complex.One;
                         Complex denominator = PolynomialDegree * zToNMinusOne;
-                        Complex zNew = z - RelaxationParameter * (numerator / denominator);
+                        Complex zNew = z - RelaxationParameter * (numerator / denominator); // Update the z value using the Newtonian formula
 
-                        if (zNew.DistanceSquaredTo(z) < Tolerance * Tolerance)
+                        if (zNew.DistanceSquaredTo(z) < Tolerance * Tolerance) // Check if the iteration has converged
                         {
                             break;
                         }
@@ -103,7 +108,7 @@ namespace Fractal_Generator
                     }
 
                     Color color = GetColor(iteration);
-                    int pixelIndex = py * bmpData.Stride + px * bytesPerPixel;
+                    int pixelIndex = py * bmpData.Stride + px * bytesPerPixel;  // Set the pixel color in the pixel array
                     pixels[pixelIndex] = color.B;
                     pixels[pixelIndex + 1] = color.G;
                     pixels[pixelIndex + 2] = color.R;
@@ -111,14 +116,14 @@ namespace Fractal_Generator
                 }
             });
 
-            System.Runtime.InteropServices.Marshal.Copy(pixels, 0, bmpData.Scan0, pixels.Length);
+            System.Runtime.InteropServices.Marshal.Copy(pixels, 0, bmpData.Scan0, pixels.Length); // Copy the pixel array back to the bitmap and unlock the bitmap data
             bitmap.UnlockBits(bmpData);
 
-            g.DrawImage(bitmap, 0, 0);
+            g.DrawImage(bitmap, 0, 0); //Draw the bitmap on the form's graphics surface
         }
 
 
-        private Complex[] ComputeRoots(int degree)
+        private Complex[] ComputeRoots(int degree)  // Calculates the roots of a polynomial equation with the specified degree
         {
             Complex[] roots = new Complex[degree];
             double angleIncrement = 2 * Math.PI / degree;
@@ -240,55 +245,104 @@ namespace Fractal_Generator
 
     public struct Complex
     {
+        // The real part of the complex number
         public double Real { get; }
+
+        // The imaginary part of the complex number
         public double Imaginary { get; }
 
+        // Constructor that initializes the real and imaginary parts
         public Complex(double real, double imaginary)
         {
             Real = real;
             Imaginary = imaginary;
         }
 
-        public static Complex operator +(Complex a, Complex b) => new Complex(a.Real + b.Real, a.Imaginary + b.Imaginary);
-        public static Complex operator -(Complex a, Complex b) => new Complex(a.Real - b.Real, a.Imaginary - b.Imaginary);
-        public static Complex operator *(Complex a, Complex b) => new Complex(a.Real * b.Real - a.Imaginary * b.Imaginary, a.Real * b.Imaginary + a.Imaginary * b.Real);
-        public static Complex operator *(Complex a, double b) => new Complex(a.Real * b, a.Imaginary * b);
-        public static Complex operator *(double a, Complex b) => new Complex(a * b.Real, a * b.Imaginary);
+        // Overloaded addition operator
+        public static Complex operator +(Complex a, Complex b)
+        {
+            return new Complex(a.Real + b.Real, a.Imaginary + b.Imaginary);
+        }
+
+        // Overloaded subtraction operator
+        public static Complex operator -(Complex a, Complex b)
+        {
+            return new Complex(a.Real - b.Real, a.Imaginary - b.Imaginary);
+        }
+
+        // Overloaded multiplication operator for two Complex numbers
+        public static Complex operator *(Complex a, Complex b)
+        {
+            // Calculate the real and imaginary parts of the product using the formula:
+            return new Complex(a.Real * b.Real - a.Imaginary * b.Imaginary, a.Real * b.Imaginary + a.Imaginary * b.Real);
+        }
+
+        // Overloaded multiplication operator for a Complex number and a scalar
+        public static Complex operator *(Complex a, double b)
+        {
+            return new Complex(a.Real * b, a.Imaginary * b);
+        }
+
+        // Overloaded multiplication operator for a scalar and a Complex number
+        public static Complex operator *(double a, Complex b)
+        {
+            return new Complex(a * b.Real, a * b.Imaginary);
+        }
+
+        // Overloaded division operator for two Complex numbers
         public static Complex operator /(Complex a, Complex b)
         {
+            // Calculate the denominator as the sum of the squares of the real and imaginary parts of b
             double denom = b.Real * b.Real + b.Imaginary * b.Imaginary;
+
+            // Calculate the real and imaginary parts of the quotient using the formula:
             return new Complex((a.Real * b.Real + a.Imaginary * b.Imaginary) / denom, (a.Imaginary * b.Real - a.Real * b.Imaginary) / denom);
         }
 
+        // Property that returns the squared magnitude of the complex number
         public double MagnitudeSquared => Real * Real + Imaginary * Imaginary;
 
+        // Method that calculates the complex number raised to a given integer exponent
         public Complex Power(int exponent)
         {
+            // If the exponent is 0, return the complex number 1 + 0i
             if (exponent == 0)
             {
                 return Complex.One;
             }
 
+            // Initialize the result to the current complex number
             Complex result = this;
+
+            // Multiply the result by the current complex number (exponent - 1) times
             for (int i = 1; i < exponent; i++)
             {
                 result *= this;
             }
+
+            // Return the final result
             return result;
         }
 
+        // Method that calculates the squared distance between the current complex number and another complex number
         public double DistanceSquaredTo(Complex other)
         {
+            // Calculate the differences between the real and imaginary parts
             double dx = Real - other.Real;
             double dy = Imaginary - other.Imaginary;
+
+            // Return the squared distance
             return dx * dx + dy * dy;
         }
 
+        // Override the ToString method to provide a string representation of the complex number
         public override string ToString()
         {
             return $"({Real}, {Imaginary})";
         }
 
+        // Static property that represents the complex number 1 + 0i
         public static Complex One => new Complex(1, 0);
     }
+
 }

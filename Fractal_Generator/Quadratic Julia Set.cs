@@ -23,9 +23,9 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Quadratic_Julia_Set_Paint);
-            this.Resize += new EventHandler(Form1_Resize);
-            this.DoubleBuffered = true;
+            this.Paint += new PaintEventHandler(Quadratic_Julia_Set_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Form1_Resize); // Add an event handler for the Resize event of the form
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
             UpdateBounds();
         }
 
@@ -92,26 +92,28 @@ namespace Fractal_Generator
             double xScale = (XMax - XMin) / width;
             double yScale = (YMax - YMin) / height;
 
-            Parallel.For(0, width, px =>
+            Parallel.For(0, width, px => // Use a parallel loop to iterate over each pixel in the bitma
             {
-                for (int py = 0; py < height; py++)
+                for (int py = 0; py < height; py++) // Iterate over each pixel in the current column
                 {
                     double x0 = XMin + xScale * px;
                     double y0 = YMin + yScale * py;
                     double zReal = x0, zImaginary = y0;
                     int iteration = 0;
-
+                    // Iterate until the magnitude of zReal and zImaginary squared is greater than or equal to 4,
+                    // or the maximum number of iterations is reached
                     while (zReal * zReal + zImaginary * zImaginary < 4 && iteration < MaxIterations)
                     {
-                        double zNextReal = zReal * zReal - zImaginary * zImaginary + juliaReal;
+                        double zNextReal = zReal * zReal - zImaginary * zImaginary + juliaReal; 
+                        // Calculate the new values of zReal and zImaginary using the Julia set formula
                         double zNextImaginary = 2 * zReal * zImaginary + juliaImaginary;
                         zReal = zNextReal;
                         zImaginary = zNextImaginary;
                         iteration++;
                     }
 
-                    Color color = GetColor(iteration);
-                    lock (bitmap)
+                    Color color = GetColor(iteration); // Get the color based on the final iteration count
+                    lock (bitmap)  // Set the pixel color in the bitmap using a lock
                     {
                         bitmap.SetPixel(px, py, color);
                     }
