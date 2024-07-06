@@ -25,8 +25,9 @@ namespace Fractal_Generator
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
-            this.Paint += new PaintEventHandler(Burning_Ship_Julia_Set_Paint);
-            this.Resize += new EventHandler(Form1_Resize);
+            this.Paint += new PaintEventHandler(Burning_Ship_Julia_Set_Paint); // Add an event handler for the Paint event of the form
+            this.Resize += new EventHandler(Form1_Resize); // Add an event handler for the Resize event of the form
+            this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
 
         private void Burning_Ship_Julia_Set_Paint(object sender, PaintEventArgs e)
@@ -74,14 +75,14 @@ namespace Fractal_Generator
             {
                 int rowStart = py * bmpData.Stride;
                 double y0 = YMin + yScale * py;
-                for (int px = 0; px < width; px++)
+                for (int px = 0; px < width; px++) // Use a parallel loop to iterate over each pixel in the bitmap
                 {
                     double x0 = XMin + xScale * px;
                     double zx = x0;
                     double zy = y0;
                     int iteration = 0;
 
-                    while (iteration < MaxIterations)
+                    while (iteration < MaxIterations) // Iterate until the maximum number of iterations is reached
                     {
                         // Burning Ship iteration with exponent
                         double zx2 = zx * zx - zy * zy;
@@ -89,23 +90,23 @@ namespace Fractal_Generator
                         zx = Math.Pow(Math.Abs(zx2), exponent) + juliaReal;
                         zy = Math.Pow(Math.Abs(zy2), exponent) + juliaImaginary;
 
-                        if (zx * zx + zy * zy > 4)
+                        if (zx * zx + zy * zy > 4)  // Check if the magnitude of zx and zy squared is greater than 4, if it is, then break out of the loop
                         {
                             break;
                         }
                         iteration++;
                     }
 
-                    Color color = GetColor(iteration);
-                    int pixelIndex = rowStart + px * bytesPerPixel;
+                    Color color = GetColor(iteration); // Get the color based on the final iteration count
+                    int pixelIndex = rowStart + px * bytesPerPixel; 
                     pixels[pixelIndex] = color.B;
                     pixels[pixelIndex + 1] = color.G;
                     pixels[pixelIndex + 2] = color.R;
                 }
             });
 
-            System.Runtime.InteropServices.Marshal.Copy(pixels, 0, bmpData.Scan0, pixels.Length);
-            bitmap.UnlockBits(bmpData);
+            System.Runtime.InteropServices.Marshal.Copy(pixels, 0, bmpData.Scan0, pixels.Length); // Copy the pixels array back to the locked bitmap data
+            bitmap.UnlockBits(bmpData); // Unlock the bitmap data
             g.DrawImage(bitmap, 0, 0);
         }
 
