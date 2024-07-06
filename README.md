@@ -34,4 +34,29 @@ The list of mathematical set classes is:
 
 ```public partial class Newtonian_Fractal : Form```
 
-A universal options class ```public partial class Options : Form``` is used to store and set the variables for each set seperately. 
+A universal options class ``` public partial class Options : Form ``` is used to store and set the variables for each set seperately. 
+
+The set form includes the ability to save the generated fractal as a: JPG, PNG, TIFF, GIF or BMP file.
+
+```csharp
+private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+{
+    dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
+    dlgSaveFile.FilterIndex = 4;
+    if (dlgSaveFile.ShowDialog() == DialogResult.OK)
+    {
+        string filename = dlgSaveFile.FileName;
+        string extension = filename.Substring(filename.LastIndexOf("."));
+        ImageFormat imageFormat = extension switch
+        {
+            ".bmp" => ImageFormat.Bmp,
+            ".jpg" or ".jpeg" => ImageFormat.Jpeg,
+            ".gif" => ImageFormat.Gif,
+            ".png" => ImageFormat.Png,
+            ".tif" or ".tiff" => ImageFormat.Tiff,
+            _ => ImageFormat.Png,
+        };
+        bitmap.Save(filename, imageFormat);
+    }
+}
+```
