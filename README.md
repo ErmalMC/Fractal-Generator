@@ -37,7 +37,7 @@ Each partial class for a given set includes access to the options menu and a loc
 The set form includes the ability to save the generated fractal as a: JPG, PNG, TIFF, GIF or BMP file using the function ```private void saveAsToolStripMenuItem_Click``` .
 
 ```csharp
-private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
 {
     // Set the filter for the Save File dialog
     dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
@@ -46,7 +46,7 @@ private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
     if (dlgSaveFile.ShowDialog() == DialogResult.OK) // Display the Save File dialog
     {
         string filename = dlgSaveFile.FileName;
-        string extension = filename.Substring(filename.LastIndexOf("."));
+        string extension = filename[filename.LastIndexOf('.')..];
         ImageFormat imageFormat = extension switch // Determine the appropriate ImageFormat based on the file extension
         {
             ".bmp" => ImageFormat.Bmp,
@@ -60,6 +60,3 @@ private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
     }
 }
 ```
-
-# User Manual
-
