@@ -1,4 +1,5 @@
-﻿using System.Drawing.Imaging;
+﻿using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace Fractal_Generator
 {
@@ -36,19 +37,19 @@ namespace Fractal_Generator
         {
             double aspectRatio = (double)this.ClientSize.Width / this.ClientSize.Height;
 
-            if (aspectRatio > 1)
+            if (aspectRatio > 1) // Check if the aspect ratio is greater than 1 (landscape orientation)
             {
-                XMin = -2.5 * aspectRatio;
-                XMax = 2.5 * aspectRatio;
-                YMin = -2.5;
-                YMax = 2.5;
+                XMin = -2.0 * aspectRatio;
+                XMax = 2.0 * aspectRatio;
+                YMin = -2.0;
+                YMax = 2.0;
             }
             else
             {
-                XMin = -2.5;
-                XMax = 2.5;
-                YMin = -2.5 / aspectRatio;
-                YMax = 2.5 / aspectRatio;
+                XMin = -2.0;
+                XMax = 2.0;
+                YMin = -2.0 / aspectRatio;
+                YMax = 2.0 / aspectRatio;
             }
         }
 
@@ -93,7 +94,7 @@ namespace Fractal_Generator
             g.DrawImage(bitmap, 0, 0);
         }
 
-        private Color GetColor(int iteration)
+        private Color GetColor(int iteration) //Returns black if current iteration is last iteration, otherwise returns corresponding color 
         {
             if (iteration == MaxIterations)
             {
@@ -103,7 +104,7 @@ namespace Fractal_Generator
             return ColorFromPalette(iteration);
         }
 
-        private Color ColorFromPalette(int iteration)
+        private Color ColorFromPalette(int iteration)  // Determines the color to be used for a given iteration of the fractal calculation
         {
             int colorCount = colorPalette.Count;
             double t = (double)iteration / MaxIterations;

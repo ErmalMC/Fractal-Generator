@@ -60,7 +60,7 @@
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(123, 22);
             saveToolStripMenuItem.Text = "Save As...";
-            saveToolStripMenuItem.Click += SaveToolStripMenuItem_Click;
+            saveToolStripMenuItem.Click += SaveAsToolStripMenuItem_Click;
             // 
             // colorToolStripMenuItem
             // 

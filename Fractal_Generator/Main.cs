@@ -1,3 +1,5 @@
+using System.Drawing.Drawing2D;
+
 namespace Fractal_Generator
 {
     public partial class Main : Form
@@ -8,6 +10,17 @@ namespace Fractal_Generator
             this.DoubleBuffered = true;
         }
 
+        // Fills the background of the form with a two-tone gradient
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            using LinearGradientBrush brush = new(this.ClientRectangle, Color.LightSkyBlue, Color.SteelBlue, 90F);
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            this.Invalidate(); // Invalidate and redraw the form as the background gradient doesn't update without it
+        }
         private void Mandlelbrot_Set_Click(object sender, EventArgs e)
         {
             // Create a new instance of the "Mandelbrot_Set" form
@@ -86,6 +99,11 @@ namespace Fractal_Generator
 
             // Display the newly created form
             myForm.Show();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

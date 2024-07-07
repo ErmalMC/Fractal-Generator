@@ -1,4 +1,6 @@
-﻿namespace Fractal_Generator
+﻿using System.Drawing.Drawing2D;
+
+namespace Fractal_Generator
 {
     public partial class Options : Form
     {
@@ -108,6 +110,12 @@
             tbLambda.Text = Lambda.ToString();
         }
 
+        // Fills the background of the form with a two-tone gradient
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            using LinearGradientBrush brush = new(this.ClientRectangle, Color.LightSkyBlue, Color.SteelBlue, 90F);
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        }
         private void BtnIteration_Click(object sender, EventArgs e)
         {
             bool valid = true;

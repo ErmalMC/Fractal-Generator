@@ -1,4 +1,5 @@
-﻿using System.Drawing.Imaging;
+﻿using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace Fractal_Generator
 {
@@ -40,7 +41,7 @@ namespace Fractal_Generator
         {
             double aspectRatio = (double)this.ClientSize.Width / this.ClientSize.Height;
 
-            if (aspectRatio > 1)
+            if (aspectRatio > 1) // Check if the aspect ratio is greater than 1 (landscape orientation)
             {
                 XMin = -2.0 * aspectRatio;
                 XMax = 2.0 * aspectRatio;
@@ -56,7 +57,7 @@ namespace Fractal_Generator
             }
         }
 
-        private Color GetColor(int iteration)
+        private Color GetColor(int iteration) //Returns black if current iteration is last iteration, otherwise returns corresponding color 
         {
             if (iteration == MaxIterations)
             {
@@ -66,7 +67,7 @@ namespace Fractal_Generator
             return ColorFromPalette(iteration);
         }
 
-        private Color ColorFromPalette(int iteration)
+        private Color ColorFromPalette(int iteration)  // Determines the color to be used for a given iteration of the fractal calculation
         {
             int colorCount = colorPalette.Count;
             double t = (double)iteration / MaxIterations;
@@ -141,16 +142,17 @@ namespace Fractal_Generator
             g.DrawImage(bitmap, 0, 0);
         }
 
-
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Set the filter for the Save File dialog
             dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
+            // Set the initial filter index to 4 (PNG)
             dlgSaveFile.FilterIndex = 4;
-            if (dlgSaveFile.ShowDialog() == DialogResult.OK)
+            if (dlgSaveFile.ShowDialog() == DialogResult.OK) // Display the Save File dialog
             {
                 string filename = dlgSaveFile.FileName;
                 string extension = filename[filename.LastIndexOf('.')..];
-                ImageFormat imageFormat = extension switch
+                ImageFormat imageFormat = extension switch // Determine the appropriate ImageFormat based on the file extension
                 {
                     ".bmp" => ImageFormat.Bmp,
                     ".jpg" or ".jpeg" => ImageFormat.Jpeg,
@@ -159,7 +161,7 @@ namespace Fractal_Generator
                     ".tif" or ".tiff" => ImageFormat.Tiff,
                     _ => ImageFormat.Png,
                 };
-                bitmap.Save(filename, imageFormat);
+                bitmap.Save(filename, imageFormat); // Save the bitmap to the selected file using the determined ImageFormat
             }
         }
 

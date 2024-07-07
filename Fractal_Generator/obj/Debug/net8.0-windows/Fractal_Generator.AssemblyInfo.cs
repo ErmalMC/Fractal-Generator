@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fractal_Generator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14351f6870bf65aa1850c566d26fe1fc08aecbcb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+faa5a4fe7ea61ed4698eb3260d5f9529e67bc03c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fractal_Generator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fractal_Generator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
