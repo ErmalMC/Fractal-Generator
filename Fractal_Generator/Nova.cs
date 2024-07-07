@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Drawing.Imaging;
 
 namespace Fractal_Generator
 {
@@ -18,19 +8,19 @@ namespace Fractal_Generator
         private double Tolerance = 0.0001;
         private double Gamma = 0.154; // Perturbation factor
         private double XMin, XMax, YMin, YMax;
-        private Bitmap bitmap;
-        private List<Color> colorPalette = new List<Color> { Color.Black, Color.Red, Color.Green, Color.Yellow };
-        private int MaxColors = 4; // Maximum number of colors allowed in the palette
+        private Bitmap? bitmap;
+        private readonly List<Color> colorPalette = [Color.Black, Color.Red, Color.Green, Color.Yellow];
+        private readonly int MaxColors = 4; // Maximum number of colors allowed in the palette
 
         // New parameters
-        private double StartValue = 0.5; // Start value parameter
-        private double RelaxationValue = 0.5; // Relaxation value parameter
+        private readonly double StartValue = 0.5; // Start value parameter
+        private readonly double RelaxationValue = 0.5; // Relaxation value parameter
         public Nova()
         {
             InitializeComponent();
             this.ClientSize = new Size(800, 800);
             this.Paint += new PaintEventHandler(Nova_Paint); // Add an event handler for the Paint event of the form
-            this.Resize += new EventHandler(Nova_Resize); // Add an event handler for the Resize event of the form
+            this.Resize += new EventHandler(Form1_Resize); // Add an event handler for the Resize event of the form
             UpdateBounds();
             this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
@@ -41,12 +31,12 @@ namespace Fractal_Generator
             g.Clear(this.BackColor); // Clear the previous drawing
             DrawNovaFractal(g, this.ClientSize.Width, this.ClientSize.Height);
         }
-        private void Nova_Resize(object sender, EventArgs e)
+        private void Form1_Resize(object sender, EventArgs e)
         {
             UpdateBounds();
             this.Invalidate(); // Force the form to redraw itself
         }
-        private void UpdateBounds()
+        private new void UpdateBounds()
         {
             double aspectRatio = (double)this.ClientSize.Width / this.ClientSize.Height;
 
@@ -151,15 +141,15 @@ namespace Fractal_Generator
             g.DrawImage(bitmap, 0, 0);
         }
 
-        
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
             dlgSaveFile.FilterIndex = 4;
             if (dlgSaveFile.ShowDialog() == DialogResult.OK)
             {
                 string filename = dlgSaveFile.FileName;
-                string extension = filename.Substring(filename.LastIndexOf("."));
+                string extension = filename[filename.LastIndexOf('.')..];
                 ImageFormat imageFormat = extension switch
                 {
                     ".bmp" => ImageFormat.Bmp,
@@ -173,57 +163,53 @@ namespace Fractal_Generator
             }
         }
 
-        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colorPalette.Clear();
 
-            using (ColorDialog colorDialog = new ColorDialog())
+            using ColorDialog colorDialog = new();
+            colorDialog.AllowFullOpen = true;
+            colorDialog.AnyColor = true;
+            colorDialog.FullOpen = true;
+            colorDialog.SolidColorOnly = false;
+
+            for (int i = 0; i < MaxColors; i++)
             {
-                colorDialog.AllowFullOpen = true;
-                colorDialog.AnyColor = true;
-                colorDialog.FullOpen = true;
-                colorDialog.SolidColorOnly = false;
-
-                for (int i = 0; i < MaxColors; i++)
+                if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (colorDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        colorPalette.Add(colorDialog.Color);
-                    }
-                    else
-                    {
-                        break; // Exit loop if dialog is cancelled
-                    }
+                    colorPalette.Add(colorDialog.Color);
                 }
-
-                if (colorPalette.Count == 0)
+                else
                 {
-                    // If no colors are selected, revert to default palette
-                    colorPalette.Add(Color.Black);
-                    colorPalette.Add(Color.Red);
-                    colorPalette.Add(Color.Green);
-                    colorPalette.Add(Color.Yellow);
+                    break; // Exit loop if dialog is cancelled
                 }
-
-                this.Invalidate(); // Force the form to redraw itself
             }
+
+            if (colorPalette.Count == 0)
+            {
+                // If no colors are selected, revert to default palette
+                colorPalette.Add(Color.Black);
+                colorPalette.Add(Color.Red);
+                colorPalette.Add(Color.Green);
+                colorPalette.Add(Color.Yellow);
+            }
+
+            this.Invalidate(); // Force the form to redraw itself
         }
 
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (Options settingsForm = new Options(MaxIterations, Gamma, Tolerance))
+            using Options settingsForm = new(MaxIterations, Gamma, Tolerance);
+            settingsForm.tbGamma.Visible = true;
+            settingsForm.tbTolerance.Visible = true;
+            settingsForm.lblGamma.Visible = true;
+            settingsForm.lblTolerance.Visible = true;
+            if (settingsForm.ShowDialog() == DialogResult.OK)
             {
-                settingsForm.tbGamma.Visible = true;
-                settingsForm.tbTolerance.Visible = true;
-                settingsForm.lblGamma.Visible = true;
-                settingsForm.lblTolerance.Visible = true;
-                if (settingsForm.ShowDialog() == DialogResult.OK)
-                {
-                    Gamma = settingsForm.Gamma;
-                    Tolerance = settingsForm.Tolerance;
-                    MaxIterations = settingsForm.MaxIterations;
-                    this.Invalidate(); // Redraw with new settings
-                }
+                Gamma = settingsForm.Gamma;
+                Tolerance = settingsForm.Tolerance;
+                MaxIterations = settingsForm.MaxIterations;
+                this.Invalidate(); // Redraw with new settings
             }
         }
     }

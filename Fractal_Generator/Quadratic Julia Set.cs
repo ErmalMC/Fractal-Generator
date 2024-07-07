@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Drawing.Imaging;
 
 namespace Fractal_Generator
 {
@@ -15,10 +6,10 @@ namespace Fractal_Generator
     {
         private int MaxIterations = 100;
         private double XMin = -2.0, XMax = 2.0, YMin = -2.0, YMax = 2.0;
-        private Bitmap bitmap;
+        private Bitmap? bitmap;
         private double juliaReal = -0.7, juliaImaginary = 0.27015; // Adjust Julia constant here
-        private List<Color> colorPalette = new List<Color> { Color.Black, Color.Red, Color.Green, Color.Yellow };
-        private int MaxColors = 4; // Maximum number of colors allowed in the palette
+        private readonly List<Color> colorPalette = [Color.Black, Color.Red, Color.Green, Color.Yellow];
+        private readonly int MaxColors = 4; // Maximum number of colors allowed in the palette
         public Quadratic_Julia_Set()
         {
             InitializeComponent();
@@ -40,7 +31,7 @@ namespace Fractal_Generator
             UpdateBounds();
             this.Invalidate(); // Force the form to redraw itself
         }
-        private void UpdateBounds()
+        private new void UpdateBounds()
         {
             double aspectRatio = (double)this.ClientSize.Width / this.ClientSize.Height;
 
@@ -104,7 +95,7 @@ namespace Fractal_Generator
                     // or the maximum number of iterations is reached
                     while (zReal * zReal + zImaginary * zImaginary < 4 && iteration < MaxIterations)
                     {
-                        double zNextReal = zReal * zReal - zImaginary * zImaginary + juliaReal; 
+                        double zNextReal = zReal * zReal - zImaginary * zImaginary + juliaReal;
                         // Calculate the new values of zReal and zImaginary using the Julia set formula
                         double zNextImaginary = 2 * zReal * zImaginary + juliaImaginary;
                         zReal = zNextReal;
@@ -125,14 +116,14 @@ namespace Fractal_Generator
 
 
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
             dlgSaveFile.FilterIndex = 4;
             if (dlgSaveFile.ShowDialog() == DialogResult.OK)
             {
                 string filename = dlgSaveFile.FileName;
-                string extension = filename.Substring(filename.LastIndexOf("."));
+                string extension = filename[filename.LastIndexOf('.')..];
                 ImageFormat imageFormat = extension switch
                 {
                     ".bmp" => ImageFormat.Bmp,
@@ -146,57 +137,53 @@ namespace Fractal_Generator
             }
         }
 
-        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colorPalette.Clear();
 
-            using (ColorDialog colorDialog = new ColorDialog())
+            using ColorDialog colorDialog = new();
+            colorDialog.AllowFullOpen = true;
+            colorDialog.AnyColor = true;
+            colorDialog.FullOpen = true;
+            colorDialog.SolidColorOnly = false;
+
+            for (int i = 0; i < MaxColors; i++)
             {
-                colorDialog.AllowFullOpen = true;
-                colorDialog.AnyColor = true;
-                colorDialog.FullOpen = true;
-                colorDialog.SolidColorOnly = false;
-
-                for (int i = 0; i < MaxColors; i++)
+                if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (colorDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        colorPalette.Add(colorDialog.Color);
-                    }
-                    else
-                    {
-                        break; // Exit loop if dialog is cancelled
-                    }
+                    colorPalette.Add(colorDialog.Color);
                 }
-
-                if (colorPalette.Count == 0)
+                else
                 {
-                    // If no colors are selected, revert to default palette
-                    colorPalette.Add(Color.Black);
-                    colorPalette.Add(Color.Red);
-                    colorPalette.Add(Color.Green);
-                    colorPalette.Add(Color.Yellow);
+                    break; // Exit loop if dialog is cancelled
                 }
-
-                this.Invalidate(); // Force the form to redraw itself
             }
+
+            if (colorPalette.Count == 0)
+            {
+                // If no colors are selected, revert to default palette
+                colorPalette.Add(Color.Black);
+                colorPalette.Add(Color.Red);
+                colorPalette.Add(Color.Green);
+                colorPalette.Add(Color.Yellow);
+            }
+
+            this.Invalidate(); // Force the form to redraw itself
         }
 
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (Options settingsForm = new Options(juliaReal,juliaImaginary,MaxIterations))
+            using Options settingsForm = new(juliaReal, juliaImaginary, MaxIterations);
+            settingsForm.tbJuliaReal.Visible = true;
+            settingsForm.tbJuliaImagined.Visible = true;
+            settingsForm.lblJuliaReal.Visible = true;
+            settingsForm.lblJuliaImagined.Visible = true;
+            if (settingsForm.ShowDialog() == DialogResult.OK)
             {
-                settingsForm.tbJuliaReal.Visible = true;
-                settingsForm.tbJuliaImagined.Visible = true;
-                settingsForm.lblJuliaReal.Visible=true;
-                settingsForm.lblJuliaImagined.Visible=true;
-                if (settingsForm.ShowDialog() == DialogResult.OK)
-                {
-                    juliaReal = settingsForm.JuliaReal;
-                    juliaImaginary = settingsForm.JuliaImaginary;
-                    MaxIterations = settingsForm.MaxIterations;
-                    this.Invalidate(); // Redraw with new settings
-                }
+                juliaReal = settingsForm.JuliaReal;
+                juliaImaginary = settingsForm.JuliaImaginary;
+                MaxIterations = settingsForm.MaxIterations;
+                this.Invalidate(); // Redraw with new settings
             }
         }
     }

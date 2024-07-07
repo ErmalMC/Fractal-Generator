@@ -58,21 +58,21 @@
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             saveAsToolStripMenuItem.Size = new Size(123, 22);
             saveAsToolStripMenuItem.Text = "Save As...";
-            saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
+            saveAsToolStripMenuItem.Click += SaveAsToolStripMenuItem_Click;
             // 
             // colorToolStripMenuItem
             // 
             colorToolStripMenuItem.Name = "colorToolStripMenuItem";
             colorToolStripMenuItem.Size = new Size(48, 20);
             colorToolStripMenuItem.Text = "Color";
-            colorToolStripMenuItem.Click += colorToolStripMenuItem_Click;
+            colorToolStripMenuItem.Click += ColorToolStripMenuItem_Click;
             // 
             // optionsToolStripMenuItem
             // 
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             optionsToolStripMenuItem.Size = new Size(61, 20);
             optionsToolStripMenuItem.Text = "Options";
-            optionsToolStripMenuItem.Click += optionsToolStripMenuItem_Click;
+            optionsToolStripMenuItem.Click += OptionsToolStripMenuItem_Click;
             // 
             // Quadratic_Julia_Set
             // 

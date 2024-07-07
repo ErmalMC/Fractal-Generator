@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Drawing.Imaging;
 
 namespace Fractal_Generator
 {
@@ -11,14 +7,13 @@ namespace Fractal_Generator
         private int MaxIterations = 100;
         private double Tolerance = 0.0001;
         private double XMin, XMax, YMin, YMax;
-        private Bitmap bitmap;
-        private List<Color> colorPalette = new List<Color> { Color.Black, Color.Red, Color.Green, Color.Yellow };
-        private int MaxColors = 4; // Maximum number of colors allowed in the palette
+        private Bitmap? bitmap;
+        private readonly List<Color> colorPalette = [Color.Black, Color.Red, Color.Green, Color.Yellow];
+        private readonly int MaxColors = 4; // Maximum number of colors allowed in the palette
         // New parameters
         private double RelaxationParameter = 0.5; // Relaxation parameter
         private int PolynomialDegree = 4; // Polynomial degree
 
-        private Complex[] roots;
         public Newtonian_Fractal()
         {
             InitializeComponent();
@@ -26,13 +21,9 @@ namespace Fractal_Generator
             this.Paint += new PaintEventHandler(Newtonian_Fractal_Paint); // Add an event handler for the Paint event of the form
             this.Resize += new EventHandler(Form1_Resize); // Add an event handler for the Resize event of the form
             UpdateBounds();
-            InitializeRoots();
             this.DoubleBuffered = true; // Enable double buffering for smoother rendering
         }
-        private void InitializeRoots() // Intializes the roots 
-        {
-            roots = ComputeRoots(PolynomialDegree);
-        }
+
         private void Newtonian_Fractal_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -46,7 +37,7 @@ namespace Fractal_Generator
             this.Invalidate(); // Force the form to redraw itself
         }
 
-        private void UpdateBounds()
+        private new void UpdateBounds()
         {
             double aspectRatio = (double)this.ClientSize.Width / this.ClientSize.Height;
 
@@ -88,7 +79,7 @@ namespace Fractal_Generator
                     double y0 = YMin + dy * py;
 
                     // Create a new Complex number with the initial x and y coordinates
-                    Complex z = new Complex(x0, y0);
+                    Complex z = new(x0, y0);
                     int iteration = 0;
 
                     while (iteration < MaxIterations) // Perform the Newtonian fractal calculation
@@ -122,19 +113,6 @@ namespace Fractal_Generator
             g.DrawImage(bitmap, 0, 0); //Draw the bitmap on the form's graphics surface
         }
 
-
-        private Complex[] ComputeRoots(int degree)  // Calculates the roots of a polynomial equation with the specified degree
-        {
-            Complex[] roots = new Complex[degree];
-            double angleIncrement = 2 * Math.PI / degree;
-            for (int i = 0; i < degree; i++)
-            {
-                double angle = i * angleIncrement;
-                roots[i] = new Complex(Math.Cos(angle), Math.Sin(angle));
-            }
-            return roots;
-        }
-
         private Color GetColor(int iteration)
         {
             if (iteration == MaxIterations)
@@ -163,14 +141,14 @@ namespace Fractal_Generator
             return Color.FromArgb(r, g, b);
         }
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
             dlgSaveFile.FilterIndex = 4;
             if (dlgSaveFile.ShowDialog() == DialogResult.OK)
             {
                 string filename = dlgSaveFile.FileName;
-                string extension = filename.Substring(filename.LastIndexOf("."));
+                string extension = filename[filename.LastIndexOf('.')..];
                 ImageFormat imageFormat = extension switch
                 {
                     ".bmp" => ImageFormat.Bmp,
@@ -184,79 +162,68 @@ namespace Fractal_Generator
             }
         }
 
-        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colorPalette.Clear();
 
-            using (ColorDialog colorDialog = new ColorDialog())
+            using ColorDialog colorDialog = new();
+            colorDialog.AllowFullOpen = true;
+            colorDialog.AnyColor = true;
+            colorDialog.FullOpen = true;
+            colorDialog.SolidColorOnly = false;
+
+            for (int i = 0; i < MaxColors; i++)
             {
-                colorDialog.AllowFullOpen = true;
-                colorDialog.AnyColor = true;
-                colorDialog.FullOpen = true;
-                colorDialog.SolidColorOnly = false;
-
-                for (int i = 0; i < MaxColors; i++)
+                if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (colorDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        colorPalette.Add(colorDialog.Color);
-                    }
-                    else
-                    {
-                        break; // Exit loop if dialog is cancelled
-                    }
+                    colorPalette.Add(colorDialog.Color);
                 }
-
-                if (colorPalette.Count == 0)
+                else
                 {
-                    // If no colors are selected, revert to default palette
-                    colorPalette.Add(Color.Blue);
-                    colorPalette.Add(Color.Red);
-                    colorPalette.Add(Color.Green);
-                    colorPalette.Add(Color.Yellow);
+                    break; // Exit loop if dialog is cancelled
                 }
-
-                this.Invalidate(); // Force the form to redraw itself
             }
+
+            if (colorPalette.Count == 0)
+            {
+                // If no colors are selected, revert to default palette
+                colorPalette.Add(Color.Blue);
+                colorPalette.Add(Color.Red);
+                colorPalette.Add(Color.Green);
+                colorPalette.Add(Color.Yellow);
+            }
+
+            this.Invalidate(); // Force the form to redraw itself
         }
 
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            using (Options settingsForm = new Options(PolynomialDegree,Tolerance,RelaxationParameter,MaxIterations))
+            using Options settingsForm = new(PolynomialDegree, Tolerance, RelaxationParameter, MaxIterations);
+            settingsForm.tbTolerance.Visible = true;
+            settingsForm.lblTolerance.Visible = true;
+            settingsForm.tbRelaxation.Visible = true;
+            settingsForm.lblRelaxation.Visible = true;
+            settingsForm.tbExponent.Visible = true;
+            settingsForm.lblExponent.Visible = true;
+            if (settingsForm.ShowDialog() == DialogResult.OK)
             {
-                settingsForm.tbTolerance.Visible = true;
-                settingsForm.lblTolerance.Visible = true;
-                settingsForm.tbRelaxation.Visible=true;
-                settingsForm.lblRelaxation.Visible = true;
-                settingsForm.tbExponent.Visible=true;
-                settingsForm.lblExponent.Visible=true;
-                if (settingsForm.ShowDialog() == DialogResult.OK)
-                {
-                    PolynomialDegree = Convert.ToInt32(settingsForm.Exponent);
-                    Tolerance=settingsForm.Tolerance;
-                    RelaxationParameter = settingsForm.Relaxation;
-                    MaxIterations = settingsForm.MaxIterations;
-                    this.Invalidate(); // Redraw with new settings
-                }
+                PolynomialDegree = Convert.ToInt32(settingsForm.Exponent);
+                Tolerance = settingsForm.Tolerance;
+                RelaxationParameter = settingsForm.Relaxation;
+                MaxIterations = settingsForm.MaxIterations;
+                this.Invalidate(); // Redraw with new settings
             }
         }
     }
 
-    public struct Complex
+    public readonly struct Complex(double real, double imaginary)
     {
         // The real part of the complex number
-        public double Real { get; }
+        public double Real { get; } = real;
 
         // The imaginary part of the complex number
-        public double Imaginary { get; }
-
-        // Constructor that initializes the real and imaginary parts
-        public Complex(double real, double imaginary)
-        {
-            Real = real;
-            Imaginary = imaginary;
-        }
+        public double Imaginary { get; } = imaginary;
 
         // Overloaded addition operator
         public static Complex operator +(Complex a, Complex b)
@@ -342,7 +309,7 @@ namespace Fractal_Generator
         }
 
         // Static property that represents the complex number 1 + 0i
-        public static Complex One => new Complex(1, 0);
+        public static Complex One => new(1, 0);
     }
 
 }

@@ -1,14 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Drawing.Imaging;
 
 namespace Fractal_Generator
 {
@@ -17,9 +7,9 @@ namespace Fractal_Generator
         private int MaxIterations = 100;
         //private const double XMin = -2.0, XMax = 1.5, YMin = -2.5, YMax = 1.0;
         private double XMin, XMax, YMin, YMax;
-        private Bitmap bitmap;
-        private List<Color> colorPalette = new List<Color> { Color.Black, Color.Red, Color.Green, Color.Yellow };
-        private int MaxColors = 4; // Maximum number of colors allowed in the palette
+        private Bitmap? bitmap;
+        private readonly List<Color> colorPalette = [Color.Black, Color.Red, Color.Green, Color.Yellow];
+        private readonly int MaxColors = 4; // Maximum number of colors allowed in the palette
         public Burning_Ship_Fractal()
         {
             InitializeComponent();
@@ -41,7 +31,7 @@ namespace Fractal_Generator
             UpdateBounds();
             this.Invalidate(); // Force the form to redraw itself
         }
-        private void UpdateBounds()
+        private new void UpdateBounds()
         {
             double aspectRatio = (double)this.ClientSize.Width / this.ClientSize.Height;
 
@@ -93,7 +83,7 @@ namespace Fractal_Generator
             // Use Parallel.For to iterate over the pixels in the bitmap
             Parallel.For(0, width, px =>
             {
-                for (int py = 0; py < height; py++) 
+                for (int py = 0; py < height; py++)
                 {
                     double x0 = XMin + (XMax - XMin) * px / width;
                     double y0 = YMin + (YMax - YMin) * py / height;
@@ -112,7 +102,7 @@ namespace Fractal_Generator
                     Color color = GetColor(iteration); // Get the color for the current pixel
                     lock (bitmap) // Lock the bitmap and set the pixel color
                     {
-                        bitmap.SetPixel(px, py, color); 
+                        bitmap.SetPixel(px, py, color);
                     }
                 }
             });
@@ -120,7 +110,7 @@ namespace Fractal_Generator
             g.DrawImage(bitmap, 0, 0); // Draw the bitmap on the form's graphics surface
         }
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Set the filter for the Save File dialog
             dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
@@ -129,7 +119,7 @@ namespace Fractal_Generator
             if (dlgSaveFile.ShowDialog() == DialogResult.OK) // Display the Save File dialog
             {
                 string filename = dlgSaveFile.FileName;
-                string extension = filename.Substring(filename.LastIndexOf("."));
+                string extension = filename[filename.LastIndexOf('.')..];
                 ImageFormat imageFormat = extension switch // Determine the appropriate ImageFormat based on the file extension
                 {
                     ".bmp" => ImageFormat.Bmp,
@@ -143,54 +133,50 @@ namespace Fractal_Generator
             }
         }
 
-        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colorPalette.Clear();
 
-            using (ColorDialog colorDialog = new ColorDialog())
+            using ColorDialog colorDialog = new();
+            colorDialog.AllowFullOpen = true;
+            colorDialog.AnyColor = true;
+            colorDialog.FullOpen = true;
+            colorDialog.SolidColorOnly = false;
+
+            for (int i = 0; i < MaxColors; i++)
             {
-                colorDialog.AllowFullOpen = true;
-                colorDialog.AnyColor = true;
-                colorDialog.FullOpen = true;
-                colorDialog.SolidColorOnly = false;
-
-                for (int i = 0; i < MaxColors; i++)
+                if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (colorDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        colorPalette.Add(colorDialog.Color);
-                    }
-                    else
-                    {
-                        break; // Exit loop if dialog is cancelled
-                    }
+                    colorPalette.Add(colorDialog.Color);
                 }
-
-                if (colorPalette.Count == 0)
+                else
                 {
-                    // If no colors are selected, revert to default palette
-                    colorPalette.Add(Color.Black);
-                    colorPalette.Add(Color.Red);
-                    colorPalette.Add(Color.Green);
-                    colorPalette.Add(Color.Yellow);
+                    break; // Exit loop if dialog is cancelled
                 }
-
-                this.Invalidate(); // Force the form to redraw itself
             }
+
+            if (colorPalette.Count == 0)
+            {
+                // If no colors are selected, revert to default palette
+                colorPalette.Add(Color.Black);
+                colorPalette.Add(Color.Red);
+                colorPalette.Add(Color.Green);
+                colorPalette.Add(Color.Yellow);
+            }
+
+            this.Invalidate(); // Force the form to redraw itself
         }
 
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (Options settingsForm = new Options(MaxIterations))
+            using Options settingsForm = new(MaxIterations);
+            if (settingsForm.ShowDialog() == DialogResult.OK)
             {
-                if (settingsForm.ShowDialog() == DialogResult.OK)
-                {
-                    MaxIterations = settingsForm.MaxIterations;
-                    this.Invalidate(); // Redraw with new settings
-                }
+                MaxIterations = settingsForm.MaxIterations;
+                this.Invalidate(); // Redraw with new settings
             }
         }
     }
 }
-        
+
 

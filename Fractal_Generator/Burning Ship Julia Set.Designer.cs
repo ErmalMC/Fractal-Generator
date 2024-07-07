@@ -58,21 +58,21 @@
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             saveAsToolStripMenuItem.Size = new Size(123, 22);
             saveAsToolStripMenuItem.Text = "Save As...";
-            saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
+            saveAsToolStripMenuItem.Click += SaveAsToolStripMenuItem_Click;
             // 
             // colorToolStripMenuItem
             // 
             colorToolStripMenuItem.Name = "colorToolStripMenuItem";
             colorToolStripMenuItem.Size = new Size(48, 20);
             colorToolStripMenuItem.Text = "Color";
-            colorToolStripMenuItem.Click += colorToolStripMenuItem_Click;
+            colorToolStripMenuItem.Click += ColorToolStripMenuItem_Click;
             // 
             // optionToolStripMenuItem
             // 
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             optionToolStripMenuItem.Size = new Size(61, 20);
             optionToolStripMenuItem.Text = "Options";
-            optionToolStripMenuItem.Click += optionToolStripMenuItem_Click;
+            optionToolStripMenuItem.Click += OptionToolStripMenuItem_Click;
             // 
             // Burning_Ship_Julia_Set
             // 

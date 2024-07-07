@@ -3,24 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\burning ship fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\burning ship fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\newtonian fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\newtonian fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\burning ship fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\burning ship fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\rational map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\rational map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\burning ship julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\burning ship julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\quadratic julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\quadratic julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\polynomial julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\polynomial julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\phoenix fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\phoenix fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\options.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\options.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\nova.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\nova.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\multibrot set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,24 +43,12 @@
       "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\mandelbrot set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\nova.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\nova.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\burning ship julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\burning ship julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\phoenix fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\phoenix fractal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\polynomial julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\polynomial julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\quadratic julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\quadratic julia set.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\options.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\options.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|c:\\users\\aleks\\source\\repos\\fractal-generator\\fractal_generator\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC8047A-806A-413A-A117-EFFF8ED3BB1C}|Fractal_Generator\\Fractal_Generator.csproj|solutionrelative:fractal_generator\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -61,94 +61,119 @@
           "SelectedChildIndex": 3,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Mandelbrot Set.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Mandelbrot Set.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Mandelbrot Set.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Mandelbrot Set.cs",
-              "RelativeToolTip": "Fractal_Generator\\Mandelbrot Set.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAD4vw0AAAAEAAAA",
+              "DocumentIndex": 0,
+              "Title": "Newtonian Fractal.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Newtonian Fractal.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Newtonian Fractal.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Newtonian Fractal.cs*",
+              "RelativeToolTip": "Fractal_Generator\\Newtonian Fractal.cs*",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAgwHEAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:37:27.647Z",
+              "WhenOpened": "2024-07-07T11:50:10.9Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Multibrot Set.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Multibrot Set.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Multibrot Set.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Multibrot Set.cs",
-              "RelativeToolTip": "Fractal_Generator\\Multibrot Set.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAIAwwA0AAAAEAAAA",
+              "Title": "Phoenix Fractal.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Phoenix Fractal.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Phoenix Fractal.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Phoenix Fractal.cs",
+              "RelativeToolTip": "Fractal_Generator\\Phoenix Fractal.cs",
+              "ViewState": "AQIAAKcAAAAAAAAAAAAgwLQAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:36:59.896Z",
+              "WhenOpened": "2024-07-07T11:50:18.481Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Burning Ship Julia Set.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Burning Ship Julia Set.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Burning Ship Julia Set.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Burning Ship Julia Set.cs",
-              "RelativeToolTip": "Fractal_Generator\\Burning Ship Julia Set.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAD4vw0AAAADAAAA",
+              "Title": "Polynomial Julia Set.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Polynomial Julia Set.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Polynomial Julia Set.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Polynomial Julia Set.cs",
+              "RelativeToolTip": "Fractal_Generator\\Polynomial Julia Set.cs",
+              "ViewState": "AQIAAJ4AAAAAAAAAAAAgwKsAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:37:20.012Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Burning Ship Fractal.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Burning Ship Fractal.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Burning Ship Fractal.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Burning Ship Fractal.cs*",
-              "RelativeToolTip": "Fractal_Generator\\Burning Ship Fractal.cs*",
-              "ViewState": "AQIAABcAAAAAAAAAAAAQwI0AAAB8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:37:17.031Z",
+              "WhenOpened": "2024-07-07T11:50:21.248Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Rational Map.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Rational Map.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Rational Map.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Rational Map.cs",
-              "RelativeToolTip": "Fractal_Generator\\Rational Map.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAD4vw0AAAAEAAAA",
+              "Title": "Quadratic Julia Set.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Quadratic Julia Set.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Quadratic Julia Set.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Quadratic Julia Set.cs",
+              "RelativeToolTip": "Fractal_Generator\\Quadratic Julia Set.cs",
+              "ViewState": "AQIAAKIAAAAAAAAAAAAgwK8AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:38:25.981Z",
+              "WhenOpened": "2024-07-07T11:50:24.017Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Newtonian Fractal.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Newtonian Fractal.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Newtonian Fractal.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Newtonian Fractal.cs",
-              "RelativeToolTip": "Fractal_Generator\\Newtonian Fractal.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKMAAAAoAAAA",
+              "Title": "Rational Map.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Rational Map.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Rational Map.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Rational Map.cs",
+              "RelativeToolTip": "Fractal_Generator\\Rational Map.cs",
+              "ViewState": "AQIAAMEAAAAAAAAAAAAgwMUAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:36:20.912Z",
+              "WhenOpened": "2024-07-07T11:50:26.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Multibrot Set.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Multibrot Set.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Multibrot Set.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Multibrot Set.cs",
+              "RelativeToolTip": "Fractal_Generator\\Multibrot Set.cs",
+              "ViewState": "AQIAAJoAAAAAAAAAAAAgwKcAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-07T11:50:07.929Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Main.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Main.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Main.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Main.cs*",
-              "RelativeToolTip": "Fractal_Generator\\Main.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAAAxAAAA",
+              "Title": "Burning Ship Fractal.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Burning Ship Fractal.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Burning Ship Fractal.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Burning Ship Fractal.cs",
+              "RelativeToolTip": "Fractal_Generator\\Burning Ship Fractal.cs",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAgwHkAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:29:09.025Z",
+              "WhenOpened": "2024-07-07T11:49:59.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Options.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Options.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Options.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Options.cs",
+              "RelativeToolTip": "Fractal_Generator\\Options.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAAAgwHEAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-07T11:54:31.786Z",
               "EditorCaption": ""
             },
             {
@@ -159,61 +184,48 @@
               "RelativeDocumentMoniker": "Fractal_Generator\\Nova.cs",
               "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Nova.cs",
               "RelativeToolTip": "Fractal_Generator\\Nova.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAEAAAA",
+              "ViewState": "AQIAALwAAAAAAAAAAAAgwMkAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:37:35.333Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Phoenix Fractal.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Phoenix Fractal.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Phoenix Fractal.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Phoenix Fractal.cs",
-              "RelativeToolTip": "Fractal_Generator\\Phoenix Fractal.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAD4vw0AAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:38:17.288Z",
+              "WhenOpened": "2024-07-07T11:50:13.848Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Polynomial Julia Set.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Polynomial Julia Set.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Polynomial Julia Set.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Polynomial Julia Set.cs",
-              "RelativeToolTip": "Fractal_Generator\\Polynomial Julia Set.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAD4vw0AAAAEAAAA",
+              "Title": "Mandelbrot Set.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Mandelbrot Set.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Mandelbrot Set.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Mandelbrot Set.cs",
+              "RelativeToolTip": "Fractal_Generator\\Mandelbrot Set.cs",
+              "ViewState": "AQIAAJsAAAAAAAAAAAAgwKgAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:38:19.842Z",
+              "WhenOpened": "2024-07-07T11:50:05.614Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Quadratic Julia Set.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Quadratic Julia Set.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Quadratic Julia Set.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Quadratic Julia Set.cs",
-              "RelativeToolTip": "Fractal_Generator\\Quadratic Julia Set.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAD4vw0AAAAEAAAA",
+              "Title": "Burning Ship Julia Set.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Burning Ship Julia Set.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Burning Ship Julia Set.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Burning Ship Julia Set.cs",
+              "RelativeToolTip": "Fractal_Generator\\Burning Ship Julia Set.cs",
+              "ViewState": "AQIAAK8AAAAAAAAAAAAgwLwAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:38:23.6Z",
+              "WhenOpened": "2024-07-07T11:50:02.945Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "Options.cs",
-              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Options.cs",
-              "RelativeDocumentMoniker": "Fractal_Generator\\Options.cs",
-              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Options.cs",
-              "RelativeToolTip": "Fractal_Generator\\Options.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAwAAAAnAAAA",
+              "Title": "Main.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Main.cs",
+              "RelativeDocumentMoniker": "Fractal_Generator\\Main.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Main.cs",
+              "RelativeToolTip": "Fractal_Generator\\Main.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T18:38:10.078Z",
+              "WhenOpened": "2024-07-07T11:49:51.176Z",
               "EditorCaption": ""
             }
           ]

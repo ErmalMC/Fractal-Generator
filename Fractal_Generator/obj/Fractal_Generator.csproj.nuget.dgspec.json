@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aleks\\Source\\Repos\\Fractal-Generator\\Fractal_Generator\\Fractal_Generator.csproj": {}
+    "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Fractal_Generator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aleks\\Source\\Repos\\Fractal-Generator\\Fractal_Generator\\Fractal_Generator.csproj": {
+    "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Fractal_Generator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aleks\\Source\\Repos\\Fractal-Generator\\Fractal_Generator\\Fractal_Generator.csproj",
+        "projectUniqueName": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Fractal_Generator.csproj",
         "projectName": "Fractal_Generator",
-        "projectPath": "C:\\Users\\aleks\\Source\\Repos\\Fractal-Generator\\Fractal_Generator\\Fractal_Generator.csproj",
+        "projectPath": "C:\\Users\\aleks\\source\\repos\\Fractal-Generator\\Fractal_Generator\\Fractal_Generator.csproj",
         "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\aleks\\Source\\Repos\\Fractal-Generator\\Fractal_Generator\\obj\\",
         "projectStyle": "PackageReference",

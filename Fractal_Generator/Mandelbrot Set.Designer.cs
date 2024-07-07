@@ -60,21 +60,21 @@
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(123, 22);
             saveToolStripMenuItem.Text = "Save As...";
-            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
+            saveToolStripMenuItem.Click += SaveToolStripMenuItem_Click;
             // 
             // colorToolStripMenuItem
             // 
             colorToolStripMenuItem.Name = "colorToolStripMenuItem";
             colorToolStripMenuItem.Size = new Size(48, 20);
             colorToolStripMenuItem.Text = "Color";
-            colorToolStripMenuItem.Click += colorToolStripMenuItem_Click;
+            colorToolStripMenuItem.Click += ColorToolStripMenuItem_Click;
             // 
             // optionsToolStripMenuItem1
             // 
             optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
             optionsToolStripMenuItem1.Size = new Size(61, 20);
             optionsToolStripMenuItem1.Text = "Options";
-            optionsToolStripMenuItem1.Click += optionsToolStripMenuItem1_Click;
+            optionsToolStripMenuItem1.Click += OptionsToolStripMenuItem1_Click;
             // 
             // customizeToolStripMenuItem
             // 

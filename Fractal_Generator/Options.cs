@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Fractal_Generator
+﻿namespace Fractal_Generator
 {
     public partial class Options : Form
     {
@@ -17,9 +7,9 @@ namespace Fractal_Generator
         public double JuliaReal { get; private set; }
         public double JuliaImaginary { get; private set; }
         public double Gamma { get; private set; }
-        public double Tolerance {  get; private set; }
-        public double Start {  get; private set; }
-        public double Relaxation {  get; private set; }
+        public double Tolerance { get; private set; }
+        public double Start { get; private set; }
+        public double Relaxation { get; private set; }
         public double Lambda { get; private set; }
         public Options(int currentMaxIterations)
         {
@@ -55,8 +45,8 @@ namespace Fractal_Generator
             tbJuliaReal.Text = JuliaReal.ToString();
             tbJuliaImagined.Text = JuliaImaginary.ToString();
         }
-        public Options(int currentExponent,  double tolerance, double relaxation, int currentMaxIterations)
-        {// Newt
+        public Options(int currentExponent, double tolerance, double relaxation, int currentMaxIterations)
+        {// Newtonian
             InitializeComponent();
             MaxIterations = currentMaxIterations;
             Exponent = currentExponent;
@@ -92,7 +82,7 @@ namespace Fractal_Generator
             InitializeComponent();
             MaxIterations = currentMaxIterations;
             Start = start;
-            Relaxation= relaxation;
+            Relaxation = relaxation;
             JuliaReal = juliaReal;
             JuliaImaginary = juliaImaginary;
             tbIteration.Text = MaxIterations.ToString();
@@ -101,24 +91,24 @@ namespace Fractal_Generator
             tbJuliaReal.Text = JuliaReal.ToString();
             tbJuliaImagined.Text = JuliaImaginary.ToString();
         }
-        public Options(int currentMaxIterations, double gamma, double tolerance, double juliaReal, double juliaImaginary,double lambda)
+        public Options(int currentMaxIterations, double gamma, double tolerance, double juliaReal, double juliaImaginary, double lambda)
         {// Rational
             InitializeComponent();
             MaxIterations = currentMaxIterations;
             Gamma = gamma;
             Tolerance = tolerance;
-            JuliaReal=juliaReal;
-            JuliaImaginary=juliaImaginary;
+            JuliaReal = juliaReal;
+            JuliaImaginary = juliaImaginary;
             Lambda = lambda;
             tbIteration.Text = MaxIterations.ToString();
             tbGamma.Text = Gamma.ToString();
             tbTolerance.Text = Tolerance.ToString();
-            tbJuliaReal.Text= JuliaReal.ToString();
-            tbJuliaImagined.Text= JuliaImaginary.ToString();
+            tbJuliaReal.Text = JuliaReal.ToString();
+            tbJuliaImagined.Text = JuliaImaginary.ToString();
             tbLambda.Text = Lambda.ToString();
         }
-        
-        private void btnIteration_Click(object sender, EventArgs e)
+
+        private void BtnIteration_Click(object sender, EventArgs e)
         {
             bool valid = true;
 

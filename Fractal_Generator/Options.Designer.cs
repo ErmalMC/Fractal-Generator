@@ -74,7 +74,7 @@
             btnIteration.TabIndex = 2;
             btnIteration.Text = "Confirm";
             btnIteration.UseVisualStyleBackColor = true;
-            btnIteration.Click += btnIteration_Click;
+            btnIteration.Click += BtnIteration_Click;
             // 
             // tbExponent
             // 
