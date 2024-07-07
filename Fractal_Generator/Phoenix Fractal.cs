@@ -124,13 +124,15 @@ namespace Fractal_Generator
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Set the filter for the Save File dialog
             dlgSaveFile.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg;*.jpeg|GIF Image|*.gif|PNG Image|*.png|TIFF Image|*.tif;*.tiff";
+            // Set the initial filter index to 4 (PNG)
             dlgSaveFile.FilterIndex = 4;
-            if (dlgSaveFile.ShowDialog() == DialogResult.OK)
+            if (dlgSaveFile.ShowDialog() == DialogResult.OK) // Display the Save File dialog
             {
                 string filename = dlgSaveFile.FileName;
                 string extension = filename[filename.LastIndexOf('.')..];
-                ImageFormat imageFormat = extension switch
+                ImageFormat imageFormat = extension switch // Determine the appropriate ImageFormat based on the file extension
                 {
                     ".bmp" => ImageFormat.Bmp,
                     ".jpg" or ".jpeg" => ImageFormat.Jpeg,
@@ -139,7 +141,7 @@ namespace Fractal_Generator
                     ".tif" or ".tiff" => ImageFormat.Tiff,
                     _ => ImageFormat.Png,
                 };
-                bitmap.Save(filename, imageFormat);
+                bitmap.Save(filename, imageFormat); // Save the bitmap to the selected file using the determined ImageFormat
             }
         }
 
